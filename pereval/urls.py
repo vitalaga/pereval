@@ -16,8 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from perevalapp.views import SubmitDataDetailView, SubmitDataUpdateView, SubmitDataListView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/v1/submit-data', include('perevalapp.urls'))
+    path('api/v1/submit-data', include('perevalapp.urls')),
+    path('api/v1/submit-data', SubmitDataListView.as_view(), name='submit-data-list'),
+    path('api/v1/submit-data/1/', SubmitDataDetailView.as_view(), name='submit-data-detail'),
+    path('api/v1/submit-data/1/', SubmitDataUpdateView.as_view(), name='submit-data-update'),
+
 ]

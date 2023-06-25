@@ -12,6 +12,7 @@ class UsersSerializer(serializers.ModelSerializer):
     class Meta:
         model = Users
         fields = ('email', 'fam', 'name', 'otc', 'phone')
+        verbose_name = 'Пользователь'
 
 
 class CoordsSerializer(serializers.ModelSerializer):
@@ -45,5 +46,21 @@ class PerevalSerializer(serializers.ModelSerializer):
         exclude = ('id', 'status')
 
 
+class PerevalSubmitDataSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PerevalAdded
+        fields = '__all__'
+
+
+class PerevalSubmitDataUpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Users
+        exclude = ('fam', 'email', 'phone')
+
+
+class PerevalSubmitDataListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Users
+        fields = '__all__'
 
 
