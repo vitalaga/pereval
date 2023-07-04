@@ -6,21 +6,20 @@ from drf_writable_nested import WritableNestedModelSerializer
 class UsersSerializer(serializers.ModelSerializer):
     class Meta:
         model = Users
-        fields = ('email', 'fam', 'name', 'otc', 'phone')
-        verbose_name = 'Пользователь'
+        fields = ('name', 'fam', 'otc', 'email', 'phone')
 
     def save(self, **kwargs):
         self.is_valid()
-        user = Users.objects.filter(email=self.validated_data.get('email'))
-        if user.exists():
-            return user.first()
+        users = Users.objects.filter(email=self.validated_data.get('email'))
+        if users.exists():
+            return users.first()
         else:
             return Users.objects.create(
                 name=self.validated_data.get('name'),
                 fam=self.validated_data.get('fam'),
                 otc=self.validated_data.get('otc'),
-                email=self.validated_data('email'),
-                phone=self.validated_data('phone'),
+                email=self.validated_data.get('email'),
+                phone=self.validated_data.get('phone'),
             )
 
 

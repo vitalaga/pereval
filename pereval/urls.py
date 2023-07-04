@@ -23,7 +23,7 @@ from perevalapp.views import *
 
 router = routers.DefaultRouter()
 router.register(r'Pereval', PerevalViewSet, basename='pereval')
-router.register(r'User', UsersViewSet, basename='pereval')
+router.register(r'User', UsersViewSet, basename='user')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
