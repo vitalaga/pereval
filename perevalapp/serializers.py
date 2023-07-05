@@ -36,11 +36,11 @@ class LevelSerializer(serializers.ModelSerializer):
 
 
 class ImagesSerializer(serializers.ModelSerializer):
-    data = serializers.URLField()
+    image = serializers.URLField()
 
     class Meta:
         model = Images
-        fields = ('data', 'title')
+        fields = ('image', 'title')
 
 
 class PerevalSerializer(WritableNestedModelSerializer):
@@ -74,10 +74,10 @@ class PerevalSerializer(WritableNestedModelSerializer):
         level = Level.objects.create(**level)
         pereval = PerevalAdded.objects.create(**validated_data, user=user, coords=coords, level=level, status='new')
 
-        for image in images:
-            data = image.pop('data')
-            title = image.pop('title')
-            Images.objects.create(data=data, pereval=pereval, title=title)
+        for img in images:
+            image = img.pop('image')
+            title = img.pop('title')
+            Images.objects.create(image=image, pereval=pereval, title=title)
 
         return pereval
 

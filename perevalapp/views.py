@@ -57,14 +57,29 @@ class PerevalViewSet(viewsets.ModelViewSet):
         else:
             return Response({
                 'state': '0',
-                'message': f"Отклонено! Причина: {pereval.get_status_display()}"
+                'message': f"Отклонено по причине {pereval.get_status_display()}"
             })
 
-    @swagger_auto_schema(auto_schema=None)
-    def update(self, request, *args, **kwargs):
-        pass
+    # @swagger_auto_schema(auto_schema=None)
+    # def update(self, request, *args, **kwargs):
+    #     pass
+    #
+    # @swagger_auto_schema(auto_schema=None)
+    # def destroy(self, request, *args, **kwargs):
+    #     pass
 
-    @swagger_auto_schema(auto_schema=None)
-    def destroy(self, request, *args, **kwargs):
-        pass
+
+class CoordsViewSet(viewsets.ModelViewSet):
+    queryset = Coords.objects.all()
+    serializer_class = CoordsSerializer
+
+
+class LevelViewSet(viewsets.ModelViewSet):
+    queryset = Level.objects.all()
+    serializer_class = LevelSerializer
+
+
+class ImagesViewSet(viewsets.ModelViewSet):
+    queryset = Images.objects.all()
+    serializer_class = ImagesSerializer
 

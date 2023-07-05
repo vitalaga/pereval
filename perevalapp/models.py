@@ -1,4 +1,5 @@
 from django.db import models
+from .services import get_path_upload_photos
 
 
 class Users(models.Model):
@@ -17,16 +18,16 @@ class Users(models.Model):
 
 
 class PerevalAdded(models.Model):
-    NEW = 'new'
-    PENDING = 'pending'
-    ACCEPTED = 'accepted'
-    REJECTED = 'rejected'
+    new = 'new'
+    pending = 'pending'
+    accepted = 'accepted'
+    rejected = 'rejected'
 
     STATUS = [
-        ('new', 'новый'),
-        ('pending', 'на проверке'),
-        ('accepted', 'одобрено'),
-        ('rejected', 'информация не принята')
+        (new, 'новый'),
+        (pending, 'на проверке'),
+        (accepted, 'одобрено'),
+        (rejected, 'информация не принята')
     ]
     user = models.ForeignKey(Users, on_delete=models.CASCADE, related_name='user')
     coords = models.ForeignKey('Coords', on_delete=models.CASCADE, blank=True, null=True)
@@ -36,7 +37,7 @@ class PerevalAdded(models.Model):
     other_titles = models.CharField(max_length=255, verbose_name='Другое название', blank=True, null=True)
     connect = models.TextField(blank=True, null=True)
     add_time = models.DateTimeField(auto_now_add=True)
-    status = models.CharField(max_length=10, choices=STATUS, default=NEW)
+    status = models.CharField(max_length=10, choices=STATUS, default=new)
 
     def __str__(self):
         return f'{self.pk} {self.beauty_title}'
@@ -75,7 +76,7 @@ class Level(models.Model):
 
 class Images(models.Model):
     pereval = models.ForeignKey(PerevalAdded, on_delete=models.CASCADE, related_name='images', blank=True, null=True)
-    image = models.ImageField(upload_to='images/', verbose_name='Изображение', blank=True, null=True)
+    image = models.ImageField(upload_to=get_path_upload_photos, verbose_name='Изображение', blank=True, null=True)
     title = models.CharField(max_length=255, verbose_name="Название", blank=True, null=True)
     date_added = models.DateField(auto_now_add=True)
 
