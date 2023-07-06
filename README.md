@@ -1,6 +1,6 @@
 ![image](https://lms-cdn.skillfactory.ru/assets/courseware/v1/6ce6d0d69d2954ea1ef1511b7c4c6fca/asset-v1:SkillFactory+PDEV+2021+type@asset+block/virt_intern_start_2.1.svg)
 
-# Pereval REST API
+# <span style="color:green">Pereval REST API</span>
 
 ___
 **Pereval REST API** реализован для приложений на Android и IOS сервиса [pereval.online](https://pereval.online/). 
@@ -26,7 +26,7 @@ ___
 
 После этого турист нажмёт кнопку «Отправить» в мобильном приложении. Мобильное приложение вызовет метод **Pereval**.
 
-> Метод ***POST/Pereval/***
+> **Метод** ***<span style="color:green"> POST/Pereval/</span>***
 
 Метод **Pereval** принимает JSON в теле запроса с информацией о перевале. Ниже находится пример такого JSON-а:
 
@@ -94,12 +94,12 @@ ___
 + **rejected** — модерация прошла, информация не принята.
 
 ---
-> Метод ***GET/Pereval/<id>***
+> **Метод** ***<span style="color:green">GET/Pereval/<id></span>***
 
 Получает одну запись (перевал) по её id, с выводом всей информации об объекте, в том числе статус модерации.
 
 ---
-> Метод ***PATCH/Pereval/<id>***
+> **Метод** ***<span style="color:green">PATCH/Pereval/< id ></span>***
 
 Позволяет отредактировать существующую запись (замена), если она в статусе new.
 Редактировать можно все поля, кроме тех, что содержат в себе ФИО, адрес почты и номер телефона.
@@ -111,7 +111,7 @@ ___
 + ***message*** — если обновить запись не удалось, напиши почему.
 
 ---
-> Метод ***GET/Pereval/?user__email=< email >***
+> **Метод** ***<span style="color:green">GET/Pereval/?user__email=< email ></span>***
 
 Получает список данных обо всех объектах, которые пользователь с почтой <email> отправил на сервер.
 
